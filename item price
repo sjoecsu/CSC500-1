@@ -1,0 +1,57 @@
+class ItemToPurchase:
+    def __init__(self):
+        self.item_name = "none"
+        self.item_price = 0.0
+        self.item_quantity = 0
+
+    def set_item_details(self):
+        self.item_name = input("Enter the item name: ").strip()
+        
+        while True:
+            try:
+                self.item_price = float(input("Enter the item price: "))
+                if self.item_price < 0:
+                    print("\nPrice cannot be negative. Please try again.")
+                    continue
+                break
+            except ValueError:
+                print("\nInvalid input. Please enter a valid number.")
+
+        while True:
+            try:
+                self.item_quantity = int(input("Enter the item quantity: "))
+                if self.item_quantity < 0:
+                    print("\nQuantity cannot be negative. Please try again.")
+                    continue
+                break
+            except ValueError:
+                print("\nInvalid input. Please enter a whole number.")
+
+    def print_item_cost(self):
+        total_cost = self.item_price * self.item_quantity
+        print(f"{self.item_name} {self.item_quantity} @ ${int(self.item_price)} = ${int(total_cost)}")
+
+    def get_total_cost(self):
+        return self.item_price * self.item_quantity
+
+def main():
+    print("\nItem 1")
+    item1 = ItemToPurchase()
+    item1.set_item_details()
+
+    print("\nItem 2")
+    item2 = ItemToPurchase()
+    item2.set_item_details()
+
+    total = item1.get_total_cost() + item2.get_total_cost()
+
+    print("\nTOTAL COST")
+    item1.print_item_cost()
+    item2.print_item_cost()
+    print(f"Total: ${int(total)}")
+
+    input("\nPress enter to exit.")
+
+main()
+
+
