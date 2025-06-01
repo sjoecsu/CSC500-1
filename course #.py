@@ -23,7 +23,7 @@ course_times = {
 }
 
 while True:
-    user_input = input("Enter a course number (e.g., CSC101): ").strip().upper()
+    user_input = input("Enter a course number (ex.: CSC101): ").strip().upper()
     
     if user_input in course_rooms:
         print(f"\nCourse: {user_input}")
